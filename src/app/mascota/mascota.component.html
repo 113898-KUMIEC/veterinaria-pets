@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body text-center">
+        <!-- Checkbox para mostrar/ocultar la mascota -->
+        <app-titulo [tipo]="'principal'"></app-titulo>
+
+        <div class="container" *ngIf="mostrarMascota">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let mascota of mascotas">
+                    <div class="card" [style.opacity]="opacidad">
+                        <!-- Contenido de la card -->
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ mascota.nombre }}</h5>
+                            <p class="card-text">Raza: {{ mascota.raza }}</p>
+                            <p class="card-text">Sexo: {{ mascota.sexo }}</p>
+                            <p class="card-text">Año Nacimiento: {{ mascota.anio}}</p>
+                            <p class="card-text">Edad: {{ mascota.anioNacimiento | calcularEdad }}</p>
+                            <button class="btn btn-primary mb-3" (click)="incrementarEdad(mascota)">Incrementar Edad</button>
+                            <p class="card-text">Tutor: {{ mascota.tutor }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <app-opacidad-rango [opacidad]="opacidad" (opacidadCambiada)="cambiarOpacidad($event)"></app-opacidad-rango>
+            </div>
+        </div>
+
+        <div class="form-check mt-5">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="mostrarMascota">
+                Mostrar mascota
+            </label>
+        </div>
+    </div>
+</div>

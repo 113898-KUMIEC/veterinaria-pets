@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="tipo">
+    <h1 *ngSwitchCase="'principal'">Listado Mascota<ng-content></ng-content></h1>
+    <h2 *ngSwitchCase="'secundario'">Listado Mascota<ng-content></ng-content></h2>
+    <h3 *ngSwitchDefault>Listado Mascota<ng-content></ng-content></h3>
+  </ng-container>
+  
